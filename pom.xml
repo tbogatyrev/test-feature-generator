@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.lanit</groupId>
+    <artifactId>test-feature-generator</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <feature-generator.version>1.0</feature-generator.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>ru.lanit</groupId>
+                <artifactId>feature-generator-maven-plugin</artifactId>
+                <version>${feature-generator.version}</version>
+                <configuration>
+                    <swaggerUrl>https://petstore.swagger.io/v2/swagger.json</swaggerUrl>
+                    <generateAdditionalFiles>true</generateAdditionalFiles>
+                    <statusCodes>200</statusCodes>
+                    <pomValues>
+                        <groupId>ru.lanit</groupId>
+                        <artifactId>test-feature-generator</artifactId>
+                        <projectVersion>1.0-SNAPSHOT</projectVersion>
+                    </pomValues>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>feature-generator-mvn-repo</id>
+            <url>https://github.com/tbogatyrev/feature-generator/raw/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>feature-generator-mvn-repo</id>
+            <url>https://github.com/tbogatyrev/feature-generator/raw/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
